@@ -3,12 +3,17 @@ from Map_Loader import MapLoader
 
 pygame.init()
 
-width = 1000
-height = 800
-screen = pygame.display.set_mode((width, height))
+width, height, game_map = MapLoader.loader('data/laby-03.dat')
+
+screen_width = 1000
+screen_height = 800
+screen = pygame.display.set_mode((screen_width, screen_width))
 pygame.display.set_caption("Boum Game :)")
 
-game_map = MapLoader.loader('data/laby-03.dat')
+tile_width = screen_width // width
+tile_height = screen_height // height
+
+screen = pygame.display.set_mode((tile_width * width, tile_height * height))
 
 running = True
 
@@ -19,6 +24,11 @@ while running:
 
     screen.fill((255, 255, 255))
 
+    for y in range(height):
+        for x in range(width):
+            if game_map[y][x] == 1:
+                pygame.draw.rect(screen, (0, 0, 0), (x * tile_width, y * tile_height, tile_width, tile_height))
+
     pygame.display.flip()
 
-pygame.QUIT()
+pygame.quit()

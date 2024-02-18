@@ -10,4 +10,4 @@ class MapLoader:
             for _ in range(height):
                 row = list(map(int, file.readline().split(',')))
                 game_map.append(row)
-        return game_map
+        return width, height, game_map
