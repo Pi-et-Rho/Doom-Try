@@ -1,5 +1,6 @@
 import pygame
 from Map_Loader import MapLoader
+from Player_Loader import Player
 
 pygame.init()
 
@@ -14,6 +15,8 @@ tile_width = screen_width // width
 tile_height = screen_height // height
 
 screen = pygame.display.set_mode((tile_width * width, tile_height * height))
+
+player = Player("NomDuJoueur", 1, 1, 5)
 
 running = True
 
